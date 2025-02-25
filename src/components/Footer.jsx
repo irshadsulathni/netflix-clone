@@ -1,6 +1,12 @@
+import youtube from '../assets/youtube_icon.png'
+
 function Footer() {
   return (
-    <div>Footer</div>
+    <div>
+        <div className="footer-icons">
+            <img src={youtube} alt="" />
+        </div>
+    </div>
   )
 }
 
