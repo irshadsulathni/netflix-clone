@@ -1,8 +1,24 @@
 import { useState } from "react";
 import logo from "../assets/logo.png";
+import { login, userSignUp } from "../firebase";
+
 
 function Login() {
   const [signState, setSignState] = useState("Sign In");
+
+  const [name,setName] = useState("")
+  const [email,setEmail] = useState("")
+  const [password,setPassword] = useState("")
+  
+  const userAuth = async(e)=>{
+    e.preventDefault()
+    if(signState === "Sign In"){
+        await login(email,password)
+    }else{
+        await userSignUp(name,email,password)
+    }
+  }
+
 
   return (
     <div className="relative w-full h-screen bg-[url('/background_banner.jpg')] bg-cover bg-center flex items-center justify-center">
@@ -22,6 +38,8 @@ function Login() {
           {/* Show Name Input Only for "Sign Up" */}
           {signState === "Sign Up" && (
             <input
+              value={name}
+              onChange={(e)=> setName(e.target.value)}  
               type="text"
               placeholder="Your Name"
               className="w-full h-[50px] bg-[#333] text-white px-4 rounded-md outline-none focus:bg-[#444] transition"
@@ -29,17 +47,21 @@ function Login() {
           )}
 
           <input
+            value={email}
+            onChange={(e)=> setEmail(e.target.value)}
             type="email"
             placeholder="Enter your Email"
             className="w-full h-[50px] bg-[#333] text-white px-4 rounded-md outline-none focus:bg-[#444] transition"
           />
           <input
+            value={password}
+            onChange={(e)=> setPassword(e.target.value)}
             type="password"
             placeholder="Password"
             className="w-full h-[50px] bg-[#333] text-white px-4 rounded-md outline-none focus:bg-[#444] transition"
           />
 
-          <button className="w-full h-[50px] bg-red-600 text-white font-semibold rounded-md mt-4 hover:bg-red-700 transition">
+          <button onClick={userAuth} type="submin" className="w-full h-[50px] bg-red-600 text-white font-semibold rounded-md mt-4 hover:bg-red-700 transition">
             {signState}
           </button>
 

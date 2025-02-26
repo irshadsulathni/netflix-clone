@@ -5,6 +5,7 @@ import bell_icon from "../assets/bell_icon.svg";
 import profile_img from "../assets/profile_img.png";
 import caret_icon from "../assets/caret_icon.svg";
 import { Menu, X, User, Settings, HelpCircle, Users } from "lucide-react";
+import { logOut } from "../firebase";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -91,7 +92,7 @@ function Navbar() {
             {/* Separator Line */}
             <hr className="border-gray-700 my-2" />
 
-            <p className="px-3 py-2 cursor-pointer hover:bg-gray-800 transition">
+            <p onClick={()=>{logOut()}} className="px-3 py-2 cursor-pointer hover:bg-gray-800 transition">
               Sign Out of Netflix
             </p>
           </div>
