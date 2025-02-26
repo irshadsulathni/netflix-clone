@@ -7,16 +7,16 @@ function Player() {
   const navigate = useNavigate();
   const [apiData, setApiData] = useState(null);
 
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MGE4N2NmNzQyZGY5NzMzOGY2NWJlZWY1MjI2N2FmMCIsIm5iZiI6MTc0MDU1NTUyOC4xNDIwMDAyLCJzdWIiOiI2N2JlYzUwODU0NTg5Y2Q4NTc1NjE3MTkiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.vOGpRaKWLdAFMg3U3nuFMfTWXmB0YoyHG9t2F5iTsqk",
-    },
-  };
-
   useEffect(() => {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MGE4N2NmNzQyZGY5NzMzOGY2NWJlZWY1MjI2N2FmMCIsIm5iZiI6MTc0MDU1NTUyOC4xNDIwMDAyLCJzdWIiOiI2N2JlYzUwODU0NTg5Y2Q4NTc1NjE3MTkiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.vOGpRaKWLdAFMg3U3nuFMfTWXmB0YoyHG9t2F5iTsqk",
+      },
+    };
+  
     fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, options)
       .then((res) => res.json())
       .then((res) => {
@@ -26,6 +26,7 @@ function Player() {
       })
       .catch((err) => console.error(err));
   }, [id]);
+  
 
   return (
     <div className="relative text-white h-screen w-full flex flex-col items-center justify-center bg-black">
@@ -36,15 +37,6 @@ function Player() {
         alt="Back"
         className="absolute top-6 left-6 w-12 cursor-pointer bg-black/50 p-2 rounded-full hover:bg-black/80 transition"
       />
-
-      {/* Video Title */}
-      {apiData && (
-        <div className="absolute top-20 text-center px-6">
-          <h1 className="text-5xl font-bold text-white drop-shadow-lg">
-            {apiData.name || "No Title"}
-          </h1>
-        </div>
-      )}
 
       {/* Video Player */}
       {apiData ? (
@@ -60,9 +52,14 @@ function Player() {
 
       {/* Video Details */}
       {apiData && (
-        <div className="absolute bottom-6 left-6 w-[90%] flex items-center justify-between text-gray-300 text-lg">
-          <p>{apiData.published_at ? apiData.published_at.slice(0, 10) : "N/A"}</p>
-          <p className="uppercase font-semibold text-white">{apiData.type || "No type"}</p>
+        <div className="absolute bottom-6 left-6 w-[90%] flex flex-col text-gray-300 text-lg">
+          <h1 className="text-2xl md:text-4xl font-bold text-white drop-shadow-lg mb-2">
+            {apiData.name || "No Title"}
+          </h1>
+          <div className="flex gap-4 text-sm md:text-lg">
+            <p>{apiData.published_at ? apiData.published_at.slice(0, 10) : "N/A"}</p>
+            <p className="uppercase font-semibold text-white">{apiData.type || "No type"}</p>
+          </div>
         </div>
       )}
     </div>
