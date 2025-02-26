@@ -54,10 +54,10 @@ function Home() {
         <TitleCards />
       </div>
       <div className="mt-8 px-6">
-        <TitleCards title={"Top Pics for you"} />
-        <TitleCards title={"Blockbuster Movies"}/>
-        <TitleCards title={"Only on Netflix"} />
-        <TitleCards title={"Upcoming"} />
+        <TitleCards title={"Top Pics for you"} category={"top_rated"} />
+        <TitleCards title={"Blockbuster Movies"} category={"popular"}/>
+        <TitleCards title={"Only on Netflix"} category={"upcoming"} />
+        <TitleCards title={"Upcoming"} category={"now_playing"} />
       </div>
       <Footer />
     </div>

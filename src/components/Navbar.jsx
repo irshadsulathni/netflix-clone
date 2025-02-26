@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "../assets/logo.png";
 import search from "../assets/search_icon.svg";
 import bell_icon from "../assets/bell_icon.svg";
@@ -9,9 +9,27 @@ import { Menu, X, User, Settings, HelpCircle, Users } from "lucide-react";
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 w-full bg-transparent text-white px-6 py-3 flex items-center justify-between z-50 transition-all duration-300">
+    <nav
+      className={`fixed top-0 w-full text-white px-6 py-3 flex items-center justify-between z-50 transition-all duration-300 ${
+        isScrolled ? "bg-black shadow-lg" : "bg-transparent"
+      }`}
+    >
       {/* Left Section */}
       <div className="flex items-center gap-6 ml-10 mt-5">
         <img src={logo} alt="Netflix Logo" className="w-24 cursor-pointer" />
