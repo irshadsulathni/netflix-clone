@@ -5,6 +5,7 @@ import Player from './pages/Player';
 import { useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase';
+import { ToastContainer } from 'react-toastify';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <div className="bg-black min-h-screen">
+      <ToastContainer  theme='dark' />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
