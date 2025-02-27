@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Player from "./pages/Player";
@@ -9,12 +9,22 @@ import { ToastContainer } from "react-toastify";
 
 function App() {
   const navigate = useNavigate();
-
+  const currentLocation = useLocation()
+  console.log('location ',currentLocation);
+  
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
+      console.log('user  ',user);
+      
       if (user) {
         console.log("Logged In");
-        navigate("/");
+        if (currentLocation.pathname.includes('/player')) {
+          console.log('its herehere');
+          
+          navigate(currentLocation.pathname);
+        }else{
+          navigate('/');
+        }
       } else {
         console.log("Logged Out");
         navigate("/login");
