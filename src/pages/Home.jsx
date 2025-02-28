@@ -37,7 +37,7 @@ function Home() {
             alt="Hero Banner"
             className="w-full h-full object-cover brightness-90"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/40 to-transparent"></div>
         </div>
 
         {/* Hero Content */}
@@ -45,7 +45,7 @@ function Home() {
           <img 
             src={avatar_tittle} 
             alt="Hero Title" 
-            className="w-[1000%] max-w-[520px] mb-4"
+            className="w-[1000%] max-w-[550px] mb-4"
           />
           <p className="text-[17px] leading-relaxed mb-4">
             Hakan, an ordinary shopkeeper in Istanbul, discovers he is the city&apos;s
