@@ -25,12 +25,9 @@ function Home() {
 
   return (
     <div className="relative top-0 w-full min-h-screen bg-black">
-      {/* Navbar */}
       <Navbar />
 
-      {/* Hero Section */}
       <div className="relative w-full h-[85vh]">
-        {/* Background Image with Gradient Overlay */}
         <div className="absolute inset-0">
           <img
             src={avatar}
@@ -47,7 +44,7 @@ function Home() {
             alt="Hero Title" 
             className="w-[1000%] max-w-[550px] mb-4"
           />
-          <p className="text-[17px] leading-relaxed mb-4">
+          <p className="text-[17px] w-[500px] leading-relaxed mb-4">
             Hakan, an ordinary shopkeeper in Istanbul, discovers he is the city&apos;s
             destined protector. With ancient powers and a secret order guiding him,
             he must battle dark forces and uncover his true destiny.
@@ -98,7 +95,7 @@ function Home() {
         <TitleCards />
       </div>
       <div className="mt-8 px-6">
-        <TitleCards title={"Top Pics for you"} category={"top_rated"} />
+        <TitleCards title={"Top Pics for you"}  category={"top_rated"} />
         <TitleCards title={"Blockbuster Movies"} category={"popular"}/>
         <TitleCards title={"Only on Netflix"} category={"upcoming"} />
         <TitleCards title={"Upcoming"} category={"now_playing"} />
